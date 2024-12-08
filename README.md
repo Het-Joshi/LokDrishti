@@ -6,6 +6,7 @@
 git clone https://github.com/Het-Joshi/LokDrishti.git
 cd LokDrishti
 ```
+---
 
 ### **newAnalysis.py** - Real-Time Log Analysis and Threat Detection
 
@@ -24,40 +25,14 @@ The `newAnalysis.py` script is a server-side component designed to receive log d
 ---
 
 #### **Prerequisites**
-1. **Python 3.x** - Ensure that Python is installed on the machine.
-2. **Required Libraries**:
+1. **Required Libraries**:
    Install the required Python libraries using the following command:
    ```bash
    pip install pyspark psutil colorama
    ```
-
-3. **System Configuration**:
+2. **System Configuration**:
    - Ensure the host IP (`HOST`) and port (`PORT`) are configured correctly for your environment.
    - Verify that the directory for storing logs (`/tmp/logs/`) exists or is configured to a valid path.
-
-4. **Spark**:
-   - Install Apache Spark if it is not already installed for PySpark usage.
-
----
-
-#### **How to Run the Script**
-1. **Start the Server**:
-   - To run the server, execute the following command in the terminal:
-     ```bash
-     python newAnalysis.py
-     ```
-   - This will start the server and begin listening for incoming client connections on the specified `HOST` and `PORT`.
-
-2. **Connect Clients**:
-   - Clients (such as the `reporter.py` script) will send log data to the master server at the defined IP and port.
-
-3. **Monitor Logs**:
-   - Once the server is running, logs will be received and analyzed for potential security threats.
-   - Alerts and system status are displayed in the terminal with color-coded messages for quick identification.
-
-4. **Stop the Script**:
-   - Use `CTRL+C` to stop the script and terminate the server.
-
 ---
 
 #### **Customization**
@@ -70,12 +45,6 @@ The `newAnalysis.py` script is a server-side component designed to receive log d
 - **Log Storage**:
    Change the path of the log storage directory and threat log file by modifying `LOG_STORAGE_DIR` and `THREAT_LOG_FILE`.
 
----
-
-#### **Additional Notes**
-- Ensure the system has sufficient resources for running PySpark, especially if processing large logs.
-- If running the script in a production environment, consider using secure communication channels like TLS/SSL for client-server communication.
-  
 ---
 
 ### **reporter.py** - Client Log Reporting and Monitoring
@@ -94,14 +63,12 @@ The `reporter.py` script collects system information such as CPU usage, memory u
 ---
 
 #### **Prerequisites**
-1. **Python 3.x** - Make sure Python is installed.
-2. **Required Libraries**:
+1. **Required Libraries**:
    Install the necessary libraries using:
    ```bash
    pip install subprocess logging
    ```
-   
-3. **System Configuration**:
+2. **System Configuration**:
    - Update the `MASTER_HOST` and `MASTER_PORT` variables to match the IP and port of the master server running `newAnalysis.py`.
 
 ---
@@ -124,15 +91,4 @@ The `reporter.py` script collects system information such as CPU usage, memory u
 
 ---
 
-#### **Customization**
-- **Log Collection Interval**:
-   You can adjust the interval between log submissions by changing the `LOG_INTERVAL` parameter.
-   
-- **Log Content**:
-   Modify the log collection functions (`get_cpu_utilization`, `get_memory_utilization`, etc.) if additional or different system metrics are required.
-
----
-
-#### **Additional Notes**
-- The script relies on the `top`, `free`, and `netstat` system commands. Ensure these commands are available and accessible on the system where the script is running.
-- For production use, consider securing the connection between the client and server (e.g., using SSL/TLS).
+the [Wiki](https://github.com/Het-Joshi/LokDrishti/wiki/Stress-Testing-and-Scalling) of this project also has ways on how to Stress test this, trigger threat alarms and scale the project for larger infrastructure.
