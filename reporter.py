@@ -38,7 +38,7 @@ def get_failed_ssh_logins():
     """Get failed SSH login attempts from journalctl."""
     failed_logins = []
     try:
-        output = subprocess.check_output("sudo journalctl -u ssh | grep 'Failed'", shell=True).decode('utf-8')
+        output = subprocess.check_output("sudo journalctl -u ssh | grep 'Failed' | tail -n 10", shell=True).decode('utf-8')
         failed_logins = output.splitlines()  # Keep raw lines as they are
     except subprocess.CalledProcessError as e:
         logging.error("Error fetching SSH logs: %s", e)
