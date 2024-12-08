@@ -1,5 +1,12 @@
 # LokDrishti
 
+### Installation
+
+```shell
+https://github.com/Het-Joshi/LokDrishti.git
+cd LokDrishti
+```
+
 ### **newAnalysis.py** - Real-Time Log Analysis and Threat Detection
 
 #### Overview
