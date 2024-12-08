@@ -3,7 +3,7 @@
 ### Installation
 
 ```shell
-https://github.com/Het-Joshi/LokDrishti.git
+git clone https://github.com/Het-Joshi/LokDrishti.git
 cd LokDrishti
 ```
 
